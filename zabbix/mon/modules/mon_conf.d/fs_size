@@ -1,0 +1,6 @@
+# fs which will be excluded from rsults
+fs_exclude = udf iso9660 swap
+# results = result / denominator
+denominator = 1000000
+# how many numbers after dot (result.NNNN)
+precision = 1

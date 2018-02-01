@@ -1,0 +1,7 @@
+# stats url
+url = 127.0.0.1:9000/haproxy_stats+csv
+# include next items in result (separation via '+')
+items = hrsp_4xx+hrsp_5xx+req_rate+rate
+# hz
+pxnames = http_RX
+

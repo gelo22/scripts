@@ -1,0 +1,8 @@
+Add string:
+UserParameter=mon[*],/etc/zabbix/scripts/mon/mon.py $1
+to /etc/zabbix/zabbix_agentd.conf.d/some.conf or /etc/zabbix/zabbix_agentd.conf
+restart zabbix_agent
+import template from ./templates/module_name.*.xml
+if links to module presented - it is ok
+if we need to add similar check - we must create link to base check and make different config in ./mon_conf.d/module_name
+

@@ -1,0 +1,7 @@
+# process stats url
+process_url = localhost:9200/_nodes/stats/process?pretty
+# health stats url
+health_url = localhost:9200/_cluster/health?pretty
+# name of tatget node
+node_name = NODE_NAME
+

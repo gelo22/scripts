@@ -1,0 +1,28 @@
+# Location of ansible inventory for script
+#config = hosts
+# User, which will be used for ssh connection
+#user = root
+# Default host for connection if not provided via cmd
+#servers = localhost
+# Default command, which will be executed on remote host(s)
+#command = uname
+# Default script's mode
+#mode = ssh
+# Number of threads - how many ssh connections will be running simultaneously
+#threads = 100
+# Output from each connection will be printed as soon as posible
+#async = 0
+# Print debug information for script
+#debug = 0
+# Command, which will be added for each ssh command (for example 'sudo' if you need it - don't ask me why)
+#ssh_prefix = sudo
+# Run in test mode - just print ssh command without execution
+#test = 0
+test = 1
+# Add ssh options to ssh command, ConnectTimeout by default is 10 seconds and hardcoded in code, please provide any if you add some options,
+# because ConnectTimeout will be overrided, ssh connection can be infinite in some cases and will make deadlock for script
+#ssh_options = ConnectTimeout=10 Compression=no
+# Write logs to file name  (full path to file)
+#log_file = /home/user/ssh.py_logs
+# Disable logs
+#no_logs =

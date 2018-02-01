@@ -1,0 +1,11 @@
+[tst]
+ubuntu-server
+#monitoring
+#ansible
+
+[web]
+web[1:9]
+
+[db]
+db[1:4]
+

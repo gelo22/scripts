@@ -1,0 +1,5 @@
+# how many seconds before now we will check in log
+time_ago = 3600
+# log file name
+file_name = PATH_TO_FILE
+

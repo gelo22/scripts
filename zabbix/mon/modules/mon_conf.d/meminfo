@@ -1,0 +1,2 @@
+# path to stats file
+meminfo_file = /proc/meminfo
