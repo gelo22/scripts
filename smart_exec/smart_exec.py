@@ -65,13 +65,23 @@ def pause_proc(instance):
     '''
     Send STOP signal for subprocess instance
     '''
-    instance.send_signal(19)
+    try:
+        instance.send_signal(19)
+    except OSError:
+        return_code = instance.poll()
+        do_log('return_code is: {0}'.format(return_code))
+        sys.exit(0)
 
 def resume_proc(instance):
     '''
     Send CONT signal for subprocess instance
     '''
-    instance.send_signal(18)
+    try:
+        instance.send_signal(18)
+    except OSError:
+        return_code = instance.poll()
+        do_log('return_code is: {0}'.format(return_code))
+        sys.exit(0)
 
 def do_log(message):
     '''
