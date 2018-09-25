@@ -1,0 +1,7 @@
+{
+"log_level": "INFO",
+"log_format": "%(asctime)s %(levelname)s %(message)s",
+"check_interval": 5,
+"pattern": "Web Content",
+"memory_limit": 512
+}
