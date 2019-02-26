@@ -8,6 +8,10 @@ this example will run command "find /" and will pause this command's process num
 
 will unpause it when LA lower than "--la_max"
 
+pause = send signal STOP to process
+
+unpause = send signal CONT to process
+
 <pre>
 usage: smart_exec.py [-h] --la_max LA_MAX [--sleep_interval SLEEP_INTERVAL]
                      --command COMMAND [--debug] [--no_renice] [--nice NICE]
