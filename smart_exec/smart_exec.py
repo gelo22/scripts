@@ -96,9 +96,10 @@ def is_proc_running(instance):
     Check if proc running
     '''
     return_code = instance.poll()
-    if return_code:
-        if return_code != 0:
-            do_log('return_code is not 0: {0}'.format(return_code))
+    if return_code == 0:
+        return False
+    elif return_code != None:
+        do_log('return_code is not 0: {0}'.format(return_code))
         return False
     else:
         return True
