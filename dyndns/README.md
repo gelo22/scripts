@@ -1,8 +1,8 @@
-###Purpose:
+### Purpose:
 
 Script which able to create/update DNS A-record via namesilo API https://www.namesilo.com/Support/API-Manager
 
-###Features:
+### Features:
 
 Client only need to connect to a server via ssh
 
@@ -20,7 +20,7 @@ Server OS Linux, BSD, etc, which have open-ssh server and Python version 2 or 3
 namesilo API key
 client with ssh-client
 
-###Examle:
+### Examle:
 
 git clone
 
