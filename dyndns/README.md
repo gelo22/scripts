@@ -67,7 +67,7 @@ It will use default interface IP to update DNS record
 Add to crontab:
 
 <pre>
-* * * * * cd && /home/ddns/ddns.py -host_name=my_hostname.example.com --address=me
+* * * * * cd && /home/ddns/ddns.py --host_name=my_hostname.example.com --address=me
 </pre>
 
 ### Examle with manual IP:
@@ -75,5 +75,5 @@ Add to crontab:
 It will use provided IP to update DNS record
 
 <pre>
-/home/ddns/ddns.py -host_name=my_hostname.example.com --address=11.1.1.1
+/home/ddns/ddns.py --host_name=my_hostname.example.com --address=11.1.1.1
 </pre>
