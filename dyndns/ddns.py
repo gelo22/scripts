@@ -10,6 +10,7 @@ import re
 import json
 import argparse
 import traceback
+import socket
 
 # python 2 and 3 version compatibility
 if sys.version_info.major == 2:
@@ -21,6 +22,7 @@ else:
 parser = argparse.ArgumentParser()
 parser.add_argument('--host_name', default=False, help='host name which must be updated')
 parser.add_argument('--config', default=sys.argv[0] + '.conf', help='config file location')
+parser.add_argument('--address', help='use this address and skip ip detection from ssh')
 parser.add_argument('--debug', default=False, help='enable debug mode')
 args = parser.parse_args()
 
@@ -46,10 +48,33 @@ class Ddns:
         with open(self.file_name, 'r') as data_file:
             self.last_ip = data_file.readline().strip()
 
+    def _get_own_ip(self):
+        '''Get own IP-address if updating own record'''
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('10.255.255.255', 1))
+        self.ip = s.getsockname()[0]
+        s.close()
+
+    def _validate_ip(self):
+        '''Validate IP-address'''
+        nums = self.ip.split('.')
+        for n in nums:
+            num = int(n)
+            if num < 0 and num > 255:
+                print('IP: {0} is not valid'.format(self.ip))
+                sys.exit(1)
+
     def _get_data(self):
         '''Get IP-address of remote client'''
-        client = os.environ['SSH_CONNECTION']
-        self.ip = client.split()[0]
+        if args.address:
+            if args.address == 'me':
+                self._get_own_ip()
+            else:
+                self.ip = args.address
+                self._validate_ip()
+        else:
+            client = os.environ['SSH_CONNECTION']
+            self.ip = client.split()[0]
 
     def _write_data(self):
         '''Write IP-address of remote client to file for future usage'''

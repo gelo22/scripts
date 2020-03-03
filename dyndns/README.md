@@ -61,3 +61,19 @@ now your DNS A-record my_hostname.example.com updated to your source ip
 you able to check API response in a directory ./ddns_logs/ which contain log files
 
 
+### Examle with default interface IP:
+
+It will use default interface IP to update DNS record
+Add to crontab:
+
+<pre>
+* * * * * cd && /home/ddns/ddns.py -host_name=my_hostname.example.com --address=me
+</pre>
+
+### Examle with manual IP:
+
+It will use provided IP to update DNS record
+
+<pre>
+/home/ddns/ddns.py -host_name=my_hostname.example.com --address=11.1.1.1
+</pre>
