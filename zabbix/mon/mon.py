@@ -29,7 +29,7 @@ class Starter(Base_check):
             try:
                 self._run_module()
             except:
-                print 0
+                print(0)
                 sys.exit(1)
 
 if __name__ == '__main__':

@@ -1,7 +1,14 @@
 {
 "log_level": "INFO",
 "log_format": "%(asctime)s %(levelname)s %(message)s",
-"check_interval": 5,
-"pattern": "Web Content",
-"memory_limit": 512
+"check_interval": 3,
+"procs_to_kill": [
+    {
+        "name": "Firefox",
+        "kill_signal": 9,
+        "pattern": "Web Content"
+    }
+],
+"memory_limit": 2000,
+"cached_limit": 9000
 }
