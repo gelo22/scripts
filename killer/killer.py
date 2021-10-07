@@ -92,7 +92,7 @@ class Killer:
             self.get_la()
             self.get_cpu_info()
             if self.mem_cached < self.conf['cached_limit']:
-                drop_cache()
+                self.drop_cache()
                 self.log.info('Cache dropped')
                 time.sleep(self.conf['check_interval'])
             if self.mem_available < self.conf['memory_limit']:

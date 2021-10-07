@@ -1,0 +1,35 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+  labels:
+    app: rancher-monitoring-apiserver
+    release: rancher-monitoring
+  name: rancher-monitoring-apiserver-tst
+  namespace: default
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 5m
+    port: https
+    scheme: https
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: false
+      serverName: kubernetes
+    relabelings:
+      - sourceLabels: [none]
+        replacement: "apiserver tst"
+        targetLabel: job
+    metricRelabelings:
+      - sourceLabels: [ __name__ ]
+        regex: '^workqueue_depth$|^aggregator_unavailable_apiservice$|^apiserver_client_certificate_expiration_seconds_count$|^workqueue_adds_total$|^apiserver_request_duration_seconds_count$|^apiserver_request_duration_seconds_bucket$|^workqueue_queue_duration_seconds_bucket$|^process_resident_memory_bytes$|^kubernetes_build_info$|^apiserver_request_duration_seconds_sum$|^apiserver_client_certificate_expiration_seconds_bucket$|^apiserver_request_total$'
+        action: keep
+  jobLabel: component
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      component: apiserver
+      provider: kubernetes
