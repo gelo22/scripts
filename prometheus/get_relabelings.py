@@ -2,6 +2,7 @@
 
 import re
 import sys
+import os
 
 # pip3 install --user pyaml
 
@@ -83,6 +84,12 @@ def get_rules():
 def get_dashboards():
     with open('dashboards.yaml') as dashboards_file:
         tmp_data['dashboards'] = dashboards_file.read()
+    path = '../monitoring/grafana-dashboards/templates/'
+    for root, subFolder, files in os.walk(path):
+        for item in files:
+            dashboard_file_name = os.path.join(root,item)
+            with open(dashboard_file_name) as dashboards_file:
+                tmp_data['dashboards'] += dashboards_file.read()
        #for line in dashboards_file:
        #    pass
 
