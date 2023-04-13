@@ -113,3 +113,4 @@ for job in metrics_per_job:
         if metric in tmp_data['rules'] or metric in tmp_data['dashboards']:
             metrics_set.add(metric)
     print('job: {}, regexp: ^{}$'.format(job, '$|^'.join(metrics_set)))
+    print('')
